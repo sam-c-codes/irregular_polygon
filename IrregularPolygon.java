@@ -15,12 +15,21 @@ public class IrregularPolygon {
     public void add(Point2D.Double aPoint)
     {
         // TODO: Add a point to the IrregularPolygon.
-        myPolygon.add(aPoint)
+        myPolygon.add(aPoint);
     }
 
     public double perimeter() {
         // TODO: Calculate the perimeter.
-        return 3.14;
+        double peri = 0.0;
+        for (int i = 0; i < myPolygon.size() - 1; i++) {
+            Point2D.Double now = myPolygon.get(i);
+            Point2D.Double next = myPolygon.get(i+1);
+            peri += now.distance(next);
+        }
+        Point2D.Double first = myPolygon.get(0);
+        Point2D.Double last = myPolygon.get(myPolygon.size() - 1);
+        peri += last.distance(first);
+        return peri;
     }
 
     public double area() {
@@ -44,6 +53,7 @@ public class IrregularPolygon {
                 Point2D.Double after = myPolygon.get(i);
                 pen.move(after.getX(), after.getY());
             }
+            pen.move(first.getX(), first.getY());
         } catch (java.awt.HeadlessException e) {
             System.out.println("Exception: No graphics support available.");
         }
