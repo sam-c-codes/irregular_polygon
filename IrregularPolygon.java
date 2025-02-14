@@ -47,7 +47,7 @@ public class IrregularPolygon {
         Point2D.Double last = myPolygon.get(myPolygon.size() - 1);
         sumx += last.x * first.y;
         sumy += last.y * first.x;
-        return ((0.5) * (sumx - sumy));
+        return ((0.5) * Math.abs(sumx - sumy));
     }
 
     public void draw()
