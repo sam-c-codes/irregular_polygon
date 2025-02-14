@@ -38,7 +38,7 @@ public class IrregularPolygon {
         double sumx = 0.0;
         double sumy = 0.0;
         for (int i = 0; i < myPolygon.size() - 1; i++) {
-            Point2D.Double now = myPolygon.get(i)
+            Point2D.Double now = myPolygon.get(i);
             Point2D.Double next = myPolygon.get(i+1);
             sumx += now.x * next.y;
             sumy += now.y * next.x;
@@ -47,7 +47,7 @@ public class IrregularPolygon {
         Point2D.Double last = myPolygon.get(myPolygon.size() - 1);
         sumx += last.x * first.y;
         sumy += last.y * first.x;
-        return (1/2) * (sumx - sumy);
+        return ((0.5) * (sumx - sumy));
     }
 
     public void draw()
