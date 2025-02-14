@@ -1,3 +1,4 @@
+import java.awt.Point;
 import java.awt.geom.*; // for Point2D.Double
 import java.util.ArrayList; // for ArrayList
 import java.util.concurrent.TimeUnit;
@@ -34,7 +35,19 @@ public class IrregularPolygon {
 
     public double area() {
         // TODO: Calculate the area.
-        return 0.0;
+        double sumx = 0.0;
+        double sumy = 0.0;
+        for (int i = 0; i < myPolygon.size() - 1; i++) {
+            Point2D.Double now = myPolygon.get(i)
+            Point2D.Double next = myPolygon.get(i+1);
+            sumx += now.x * next.y;
+            sumy += now.y * next.x;
+        }
+        Point2D.Double first = myPolygon.get(0);
+        Point2D.Double last = myPolygon.get(myPolygon.size() - 1);
+        sumx += last.x * first.y;
+        sumy += last.y * first.x;
+        return (1/2) * (sumx - sumy);
     }
 
     public void draw()
